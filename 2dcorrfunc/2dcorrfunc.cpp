@@ -1,4 +1,4 @@
-#include "2dcorrfunc.h"
+п»ї#include "2dcorrfunc.h"
 
 
 float f(float x, float y)
@@ -16,7 +16,7 @@ void ClearACFResult()
 
 void ACF()
 {
-	//использовать попозже
+	//РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РїРѕРїРѕР·Р¶Рµ
 	/*float delta = 0.1;
 	float tau[1024];
 	tau[0]=-102.4;
@@ -24,7 +24,7 @@ void ACF()
 	{
 		tau[i + 1] = tau[i] + delta;
 	}*/
-	//дополнение нулями
+	//РґРѕРїРѕР»РЅРµРЅРёРµ РЅСѓР»СЏРјРё
 	float data_null[3 * ARRAY_LENGTH];
 
 	for (int i = 0; i < 3 * ARRAY_LENGTH; i++)
@@ -236,18 +236,18 @@ void display()
 
 	for (int tau = 0; tau < 2 * ARRAY_LENGTH + 1; tau += 16)
 	{
-		//разбиваю числа на сотни, десятки и единицы для вывода на экран
+		//СЂР°Р·Р±РёРІР°СЋ С‡РёСЃР»Р° РЅР° СЃРѕС‚РЅРё, РґРµСЃСЏС‚РєРё Рё РµРґРёРЅРёС†С‹ РґР»СЏ РІС‹РІРѕРґР° РЅР° СЌРєСЂР°РЅ
 		int tauH, tauT, tauU;
 		div_t d;
 		d = div(tau - ARRAY_LENGTH, 100);
-		tauH = d.quot;//целая часть от деления
+		tauH = d.quot;//С†РµР»Р°СЏ С‡Р°СЃС‚СЊ РѕС‚ РґРµР»РµРЅРёСЏ
 		d = div(abs(d.rem), 10);
 		tauT = d.quot;
-		tauU = d.rem;//остаток от деления
+		tauU = d.rem;//РѕСЃС‚Р°С‚РѕРє РѕС‚ РґРµР»РµРЅРёСЏ
 		char tauChar[3];
 		float zeroFive = 0;
 		glColor3f(0, 0, 0);
-		//перевод числа в char
+		//РїРµСЂРµРІРѕРґ С‡РёСЃР»Р° РІ char
 		if (tau - ARRAY_LENGTH < 0 && !freqSet)
 		{
 			glRasterPos3f(5 * (tau - ARRAY_LENGTH) + zeroFive, 0, 450);
@@ -262,8 +262,8 @@ void display()
 
 		if (tauH != 0)
 		{
-			_itoa_s(tauH, tauChar, 10);//10 - система исчисления
-			if (tauChar[0] == '-')//если число отрицательное
+			_itoa_s(tauH, tauChar, 10);//10 - СЃРёСЃС‚РµРјР° РёСЃС‡РёСЃР»РµРЅРёСЏ
+			if (tauChar[0] == '-')//РµСЃР»Рё С‡РёСЃР»Рѕ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕРµ
 			{
 				/*glRasterPos3f(5 * (tau - ARRAY_LENGTH), 0, 250);
 				glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, tauChar[0]);
@@ -298,22 +298,22 @@ void display()
 
 	for (int freq = 0; freq < 2 * ARRAY_LENGTH + 1; freq += 16)
 	{
-		//разбиваю числа на сотни, десятки и единицы для вывода на экран
+		//СЂР°Р·Р±РёРІР°СЋ С‡РёСЃР»Р° РЅР° СЃРѕС‚РЅРё, РґРµСЃСЏС‚РєРё Рё РµРґРёРЅРёС†С‹ РґР»СЏ РІС‹РІРѕРґР° РЅР° СЌРєСЂР°РЅ
 		int freqH, freqT, freqU;
 		div_t d;
 		d = div(freq - ARRAY_LENGTH, 100);
-		freqH = d.quot;//целая часть от деления
+		freqH = d.quot;//С†РµР»Р°СЏ С‡Р°СЃС‚СЊ РѕС‚ РґРµР»РµРЅРёСЏ
 		d = div(abs(d.rem), 10);
 		freqT = d.quot;
-		freqU = d.rem;//остаток от деления
+		freqU = d.rem;//РѕСЃС‚Р°С‚РѕРє РѕС‚ РґРµР»РµРЅРёСЏ
 		char freqChar[3];
-		float zeroFive = 0;//расстояние между символами
+		float zeroFive = 0;//СЂР°СЃСЃС‚РѕСЏРЅРёРµ РјРµР¶РґСѓ СЃРёРјРІРѕР»Р°РјРё
 		glColor3f(0, 0, 0);
 		if (tauSet)
 		{
 			freqH = freqT = 0;
 		}
-		//перевод числа в char
+		//РїРµСЂРµРІРѕРґ С‡РёСЃР»Р° РІ char
 		if (freq - ARRAY_LENGTH < 0 && !tauSet)
 		{
 			glRasterPos3f(0, 5 * (freq - ARRAY_LENGTH) + zeroFive, 450);
@@ -322,8 +322,8 @@ void display()
 		}
 		if (freqH != 0)
 		{
-			_itoa_s(freqH, freqChar, 10);//10 - система исчисления
-			if (freqChar[0] == '-')//если число отрицательное
+			_itoa_s(freqH, freqChar, 10);//10 - СЃРёСЃС‚РµРјР° РёСЃС‡РёСЃР»РµРЅРёСЏ
+			if (freqChar[0] == '-')//РµСЃР»Рё С‡РёСЃР»Рѕ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕРµ
 			{
 				/*glRasterPos3f(0, 5 * (freq - ARRAY_LENGTH) + zeroFive, 250);
 				glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, freqChar[0]);
@@ -361,12 +361,12 @@ void display()
 		int acfZ_H, acfZ_T, acfZ_U;
 		div_t d;
 		d = div(acfZ, 100);
-		acfZ_H = d.quot;//целая часть от деления
+		acfZ_H = d.quot;//С†РµР»Р°СЏ С‡Р°СЃС‚СЊ РѕС‚ РґРµР»РµРЅРёСЏ
 		d = div(abs(d.rem), 10);
 		acfZ_T = d.quot;
-		acfZ_U = d.rem;//остаток от деления
+		acfZ_U = d.rem;//РѕСЃС‚Р°С‚РѕРє РѕС‚ РґРµР»РµРЅРёСЏ
 		char acfZ_Char[3];
-		float zeroFive = 0;//расстояние между символами
+		float zeroFive = 0;//СЂР°СЃСЃС‚РѕСЏРЅРёРµ РјРµР¶РґСѓ СЃРёРјРІРѕР»Р°РјРё
 		glColor3f(0, 0, 0);
 		if (!upViewSet)
 		{
@@ -374,8 +374,8 @@ void display()
 			{
 				if (acfZ_H != 0)
 				{
-					_itoa_s(acfZ_H, acfZ_Char, 10);//10 - система исчисления
-					if (acfZ_Char[0] == '-')//если число отрицательное
+					_itoa_s(acfZ_H, acfZ_Char, 10);//10 - СЃРёСЃС‚РµРјР° РёСЃС‡РёСЃР»РµРЅРёСЏ
+					if (acfZ_Char[0] == '-')//РµСЃР»Рё С‡РёСЃР»Рѕ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕРµ
 					{
 						glRasterPos3f(zeroFive + 10, 0, acfZ);
 						glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, acfZ_Char[0]);
@@ -417,8 +417,8 @@ void display()
 			{
 				if (acfZ_H != 0)
 				{
-					_itoa_s(acfZ_H, acfZ_Char, 10);//10 - система исчисления
-					if (acfZ_Char[0] == '-')//если число отрицательное
+					_itoa_s(acfZ_H, acfZ_Char, 10);//10 - СЃРёСЃС‚РµРјР° РёСЃС‡РёСЃР»РµРЅРёСЏ
+					if (acfZ_Char[0] == '-')//РµСЃР»Рё С‡РёСЃР»Рѕ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕРµ
 					{
 						glRasterPos3f(0, zeroFive + 10, acfZ);
 						glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, acfZ_Char[0]);
@@ -535,7 +535,7 @@ void keyboard(unsigned char key, int x, int y)
 		}
 	if (key == '+')
 	{
-		//можно нажать только 4 раза
+		//РјРѕР¶РЅРѕ РЅР°Р¶Р°С‚СЊ С‚РѕР»СЊРєРѕ 4 СЂР°Р·Р°
 		if (keyCheckMinus != 0)
 		{
 			if (keyCheckPlus < 4 + keyCheckMinus)
@@ -701,7 +701,7 @@ int main(int argc, char **argv)
 	glLoadIdentity();
 	glFrustum(-150, 150, -150, 150, 200, 2000);
 	glutMouseFunc(mouse);
-	glutMotionFunc(motion);//функция захвата мыши
+	glutMotionFunc(motion);//С„СѓРЅРєС†РёСЏ Р·Р°С…РІР°С‚Р° РјС‹С€Рё
 	glutKeyboardFunc(keyboard);
 	gluLookAt(-200,-400,200,0,0.0,0.0,0.0,0.0,1.0);
 	glScalef(0.4, 0.4, 0.4);

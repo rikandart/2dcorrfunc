@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #define _USE_MATH_DEFINES
 
 #include <windows.h> 
@@ -27,7 +27,7 @@ float angleY = 0;
 int oldX = 0;
 int oldY = 0;
 bool wasAnabled = false;
-int keyCheckPlus = 0;//cì ôóíêöèş keyboard
+int keyCheckPlus = 0;//cĞ¼ Ñ„ÑƒĞ½ĞºÑ†Ğ¸Ñ keyboard
 int keyCheckMinus = 0;
 bool tauSet, freqSet, upViewSet = false;
 void mouse(int button, int state, int x, int y)
